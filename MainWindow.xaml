@@ -1,0 +1,44 @@
+﻿<Window x:Class="IdeasFactory.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="点子工厂" Height="600" Width="800" Icon="pack://siteoforigin:,,,/Icon/BulbIcon.ico">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="pack://siteoforigin:,,,/Image/TitleBackground.jpg"/>
+        </Grid.Background>
+        <Button x:Name="RandomButton" HorizontalAlignment="Left" Height="150" Margin="543.5,43.5,0,0" VerticalAlignment="Top" Width="200" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="RandomButton_Click">
+            <Button.OpacityMask>
+                <ImageBrush ImageSource="pack://siteoforigin:,,,/Icon/Cloud.png" Stretch="Uniform"/>
+            </Button.OpacityMask>
+            <Button.Background>
+                <ImageBrush ImageSource="pack://siteoforigin:,,,/Icon/Cloud.png" Stretch="Uniform"/>
+            </Button.Background>
+        </Button>
+        <Button Content="Button" HorizontalAlignment="Left" Height="150" Margin="65.888,124.097,0,0" VerticalAlignment="Top" Width="200" BorderBrush="{x:Null}">
+            <Button.OpacityMask>
+                <ImageBrush ImageSource="pack://siteoforigin:,,,/Icon/Cloud.png" Stretch="Uniform"/>
+            </Button.OpacityMask>
+            <Button.Background>
+                <ImageBrush ImageSource="pack://siteoforigin:,,,/Icon/Cloud.png" Stretch="Uniform"/>
+            </Button.Background>
+        </Button>
+        <Button Content="Button" HorizontalAlignment="Left" Height="150" Margin="465.888,379.321,0,0" VerticalAlignment="Top" Width="200" BorderBrush="{x:Null}">
+            <Button.OpacityMask>
+                <ImageBrush ImageSource="pack://siteoforigin:,,,/Icon/Cloud.png" Stretch="Uniform"/>
+            </Button.OpacityMask>
+            <Button.Background>
+                <ImageBrush ImageSource="pack://siteoforigin:,,,/Icon/Cloud.png" Stretch="Uniform"/>
+            </Button.Background>
+        </Button>
+        <Label Content="生成点子" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" HorizontalAlignment="Left" Height="34.737" Margin="572.667,135.097,0,0" VerticalAlignment="Top" Width="141" Foreground="White" FontFamily="Microsoft Himalaya" FontSize="24"/>
+        <Image HorizontalAlignment="Left" Height="117" Margin="10,442,0,0" VerticalAlignment="Top" Width="255.888" Source="pack://siteoforigin:,,,/Icon/Title.png"/>
+        <Button Name="BulbImage" HorizontalAlignment="Left" Height="110" Margin="395,44,0,0" VerticalAlignment="Top" Width="62" RenderTransformOrigin="0.5,0.5" BorderBrush="{x:Null}" Click="BulbImage_Click">
+            <Button.OpacityMask>
+                <ImageBrush ImageSource="pack://siteoforigin:,,,/Icon/Bulb.png"/>
+            </Button.OpacityMask>
+            <Button.Background>
+                <ImageBrush ImageSource="pack://siteoforigin:,,,/Icon/Bulb.png"/>
+            </Button.Background>
+        </Button>
+    </Grid>
+</Window>

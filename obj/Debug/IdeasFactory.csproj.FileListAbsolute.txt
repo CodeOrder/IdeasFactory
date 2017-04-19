@@ -1,0 +1,16 @@
+M:\IdeasFactory\IdeasFactory\bin\Debug\IdeasFactory.exe.config
+M:\IdeasFactory\IdeasFactory\bin\Debug\IdeasFactory.exe
+M:\IdeasFactory\IdeasFactory\bin\Debug\IdeasFactory.pdb
+M:\IdeasFactory\IdeasFactory\obj\Debug\MainWindow.baml
+M:\IdeasFactory\IdeasFactory\obj\Debug\MainWindow.g.cs
+M:\IdeasFactory\IdeasFactory\obj\Debug\App.g.cs
+M:\IdeasFactory\IdeasFactory\obj\Debug\IdeasFactory_MarkupCompile.cache
+M:\IdeasFactory\IdeasFactory\obj\Debug\IdeasFactory.g.resources
+M:\IdeasFactory\IdeasFactory\obj\Debug\IdeasFactory.Properties.Resources.resources
+M:\IdeasFactory\IdeasFactory\obj\Debug\IdeasFactory.csproj.GenerateResource.Cache
+M:\IdeasFactory\IdeasFactory\obj\Debug\IdeasFactory.exe
+M:\IdeasFactory\IdeasFactory\obj\Debug\IdeasFactory.pdb
+M:\IdeasFactory\IdeasFactory\obj\Debug\RandomIdeaSys\RandomIdea.baml
+M:\IdeasFactory\IdeasFactory\obj\Debug\RandomIdeaSys\RandomIdea.g.cs
+M:\IdeasFactory\IdeasFactory\obj\Debug\AboutusWindow.baml
+M:\IdeasFactory\IdeasFactory\obj\Debug\AboutusWindow.g.cs
