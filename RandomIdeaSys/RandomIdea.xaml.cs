@@ -12,6 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.IO;
 using System.Diagnostics;
+using System.Timers;
 
 namespace IdeasFactory.RandomIdeaSys
 {
@@ -21,21 +22,49 @@ namespace IdeasFactory.RandomIdeaSys
     public partial class RandomIdea : Window
     {
         static IdeaSys.SimpleIdea current_idea = null;
+        string[] subjects = File.ReadAllLines("Dictionary\\subject.ini", Encoding.Default);
+        string[] preps = File.ReadAllLines("Dictionary\\preposition.ini", Encoding.Default);
+        string[] predicates = File.ReadAllLines("Dictionary\\predicate.ini", Encoding.Default);
+        string[] verbs = File.ReadAllLines("Dictionary\\targetverb.ini", Encoding.Default);
+
+        System.Timers.Timer TigerAnimationTimer = new System.Timers.Timer();
+
         public RandomIdea()
         {
             current_idea = new IdeaSys.SimpleIdea(new string[] { "主语", "没看见", "谓语" });
+            TigerAnimationTimer.Elapsed += new ElapsedEventHandler(TigerAnimation);
+            TigerAnimationTimer.Interval = 50;
+            TigerAnimationTimer.Enabled = false;
+
             InitializeComponent();
         }
 
-        private void StartButton_Click(object sender, RoutedEventArgs e)
+        int FinishedValue = 0;
+        private void TigerAnimation(object sender, EventArgs e)
+        {
+            this.Dispatcher.Invoke(new Action(delegate
+            {
+                FinishedValue += 1;
+                if (FinishedValue < 10)
+                {
+                    this.FirstBlock.Text = subjects[FinishedValue % subjects.Length];
+                    this.SecondBlock.Text = preps[FinishedValue % preps.Length];
+                    this.ThirdBlock.Text = predicates[FinishedValue % predicates.Length];
+                }
+                else
+                {
+                    TigerAnimationTimer.Enabled = false;
+                    FinishedValue = 0;
+                    MakeRandom();
+                }
+            }));
+        }
+
+        private void MakeRandom()
         {
             int mode = this.ModeSetting.SelectedIndex + 1;
             if (mode == 1)                                          //who where what mode
             {
-                string[] subjects = File.ReadAllLines("Dictionary\\subject.ini", Encoding.Default);
-                string[] preps = File.ReadAllLines("Dictionary\\preposition.ini", Encoding.Default);
-                string[] predicates = File.ReadAllLines("Dictionary\\predicate.ini", Encoding.Default);
-
                 Random subram = new Random();
                 Random prepram = new Random();
                 Random predram = new Random();
@@ -45,9 +74,6 @@ namespace IdeasFactory.RandomIdeaSys
             }
             else
             {
-                string[] subjects = File.ReadAllLines("Dictionary\\subject.ini", Encoding.Default);
-                string[] verbs = File.ReadAllLines("Dictionary\\targetverb.ini", Encoding.Default);
-
                 Random subram = new Random();
                 Random vebram = new Random();
                 this.FirstBlock.Text = subjects[subram.Next(0, subjects.Length - 1)];
@@ -55,6 +81,12 @@ namespace IdeasFactory.RandomIdeaSys
                 this.ThirdBlock.Text = subjects[subram.Next(0, subjects.Length - 1)];
             }
             current_idea = new IdeaSys.SimpleIdea(new string[] { this.FirstBlock.Text, this.SecondBlock.Text, this.ThirdBlock.Text });
+       
+        }
+
+        private void StartButton_Click(object sender, RoutedEventArgs e)
+        {
+            TigerAnimationTimer.Enabled = true;
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
