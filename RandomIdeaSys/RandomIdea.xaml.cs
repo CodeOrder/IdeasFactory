@@ -26,6 +26,7 @@ namespace IdeasFactory.RandomIdeaSys
         string[] preps = File.ReadAllLines("Dictionary\\preposition.ini", Encoding.Default);
         string[] predicates = File.ReadAllLines("Dictionary\\predicate.ini", Encoding.Default);
         string[] verbs = File.ReadAllLines("Dictionary\\targetverb.ini", Encoding.Default);
+        string[] funcs = File.ReadAllLines("Dictionary\\function.ini", Encoding.Default);
 
         System.Timers.Timer TigerAnimationTimer = new System.Timers.Timer();
 
@@ -63,7 +64,7 @@ namespace IdeasFactory.RandomIdeaSys
         private void MakeRandom()
         {
             int mode = this.ModeSetting.SelectedIndex + 1;
-            if (mode == 1)                                          //who where what mode
+            if (mode == 1)                                          //主谓+地点
             {
                 Random subram = new Random();
                 Random prepram = new Random();
@@ -72,13 +73,20 @@ namespace IdeasFactory.RandomIdeaSys
                 this.SecondBlock.Text = preps[prepram.Next(0, preps.Length - 1)];
                 this.ThirdBlock.Text = predicates[predram.Next(0, predicates.Length - 1)];
             }
-            else
+            else if(mode ==2 )                                      //及物动词
             {
                 Random subram = new Random();
                 Random vebram = new Random();
                 this.FirstBlock.Text = subjects[subram.Next(0, subjects.Length - 1)];
                 this.SecondBlock.Text = verbs[vebram.Next(0, verbs.Length - 1)];
                 this.ThirdBlock.Text = subjects[subram.Next(0, subjects.Length - 1)];
+            }
+            else if (mode == 3)
+            {
+                Random funcram = new Random();
+                this.FirstBlock.Text = "一个能";
+                this.SecondBlock.Text = funcs[funcram.Next(0, funcs.Length - 1)];
+                this.ThirdBlock.Text = "的程序";
             }
             current_idea = new IdeaSys.SimpleIdea(new string[] { this.FirstBlock.Text, this.SecondBlock.Text, this.ThirdBlock.Text });
        
