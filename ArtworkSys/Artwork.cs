@@ -14,16 +14,34 @@ namespace IdeasFactory.ArtworkSys
     class Painting : Artwork
     {
         internal string painter;
-        public Painting(string _name, string _painter)
+        public Painting(string[] args)
         {
-            this.name = _name;
-            this.painter = _painter;
+            if (args.Length == 3)           //args的第一项为（无用的）路径
+                this.time = args[2];
+            this.name = args[0];
+            this.painter = args[1];
         }
-        public Painting(string _name, string _painter, string _time)
+    }
+
+    class Music : Artwork
+    {
+        internal string musician;
+        internal string album;
+        internal string style;
+        public Music(string[] args)         //格式：标题，音乐家，专辑，风格，后两项可选
         {
-            this.name = _name;
-            this.painter = _painter;
-            this.time = _time;
+            switch (args.Length)
+            {
+                case 3:
+                    this.album = args[2];
+                    break;
+                case 4:
+                    this.album = args[2];
+                    this.style = args[4];
+                    break;
+            }
+            this.name = args[0];
+            this.musician = args[1];
         }
     }
 }

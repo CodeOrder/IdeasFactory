@@ -69,5 +69,11 @@ namespace IdeasFactory
             AboutusWindow about = new AboutusWindow();
             about.Show();
         }
+
+        private void ArtworkButton_Click(object sender, RoutedEventArgs e)
+        {
+            IdeasFactory.ArtworkSys.ArtworkMainWindow art = new ArtworkSys.ArtworkMainWindow();
+            art.Show();
+        }
     }
 }
