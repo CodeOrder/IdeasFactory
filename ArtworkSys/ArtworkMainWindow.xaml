@@ -11,7 +11,7 @@
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
-        <Button HorizontalAlignment="Left" Height="164" VerticalAlignment="Top" Width="176" Margin="10,10,0,0" BorderBrush="{x:Null}" Foreground="{x:Null}">
+        <Button Name="PaintingButton" HorizontalAlignment="Left" Height="164" VerticalAlignment="Top" Width="176" Margin="10,10,0,0" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="PaintingButton_Click">
             <Button.OpacityMask>
                 <ImageBrush ImageSource="pack://siteoforigin:,,,/Icon/Painting.png"/>
             </Button.OpacityMask>

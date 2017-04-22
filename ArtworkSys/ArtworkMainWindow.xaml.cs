@@ -28,5 +28,11 @@ namespace IdeasFactory.ArtworkSys
         {
             this.Close();
         }
+
+        private void PaintingButton_Click(object sender, RoutedEventArgs e)
+        {
+            Artwork_PaintingWindow painting = new Artwork_PaintingWindow();
+            painting.Show();
+        }
     }
 }
