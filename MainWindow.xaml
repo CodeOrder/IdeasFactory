@@ -22,7 +22,7 @@
                 <ImageBrush ImageSource="pack://siteoforigin:,,,/Icon/Cloud.png" Stretch="Uniform"/>
             </Button.Background>
         </Button>
-        <Button Content="Button" HorizontalAlignment="Left" Height="150" Margin="465.888,379.321,0,0" VerticalAlignment="Top" Width="200" BorderBrush="{x:Null}">
+        <Button Name="CorkBoardButton" HorizontalAlignment="Left" Height="150" Margin="465.888,379.321,0,0" VerticalAlignment="Top" Width="200" BorderBrush="{x:Null}" Click="CorkBoardButton_Click">
             <Button.OpacityMask>
                 <ImageBrush ImageSource="pack://siteoforigin:,,,/Icon/Cloud.png" Stretch="Uniform"/>
             </Button.OpacityMask>
@@ -41,5 +41,6 @@
             </Button.Background>
         </Button>
         <Label Content="艺术品" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" HorizontalAlignment="Left" Height="36" Margin="97,214,0,0" VerticalAlignment="Top" Width="141" Foreground="White" FontFamily="Microsoft Himalaya" FontSize="24"/>
+        <Label Content="软木板" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" HorizontalAlignment="Left" Height="36" Margin="495,467,0,0" VerticalAlignment="Top" Width="141" Foreground="White" FontFamily="Microsoft Himalaya" FontSize="24"/>
     </Grid>
 </Window>

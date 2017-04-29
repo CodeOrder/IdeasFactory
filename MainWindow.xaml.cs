@@ -75,5 +75,11 @@ namespace IdeasFactory
             IdeasFactory.ArtworkSys.ArtworkMainWindow art = new ArtworkSys.ArtworkMainWindow();
             art.Show();
         }
+
+        private void CorkBoardButton_Click(object sender, RoutedEventArgs e)
+        {
+            CorkBoardSys.BoardWindow board = new CorkBoardSys.BoardWindow();
+            board.Show();
+        }
     }
 }

@@ -1,0 +1,13 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:IdeasFactory.CorkBoardSys" x:Class="IdeasFactory.CorkBoardSys.BoardWindow"
+        Title="BoardWindow" Height="768" Width="1024"
+        WindowStyle="None" AllowsTransparency="True"
+        Opacity="0.7" MouseLeftButtonDown="MouseLeftButton_Down" MouseRightButtonDown="MouseRightButton_Down">
+    <Border Background="Black" x:Name="MainBorder">
+        <Grid Name="PanelGrid">
+            <Rectangle Fill="#FFF4F4F5" Stroke="Black" Margin="0,0,0,730"/>
+        </Grid>
+    </Border>
+</Window>
