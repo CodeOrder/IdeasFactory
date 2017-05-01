@@ -7,7 +7,9 @@
         Opacity="0.7" MouseLeftButtonDown="MouseLeftButton_Down" MouseRightButtonDown="MouseRightButton_Down">
     <Border Background="Black" x:Name="MainBorder">
         <Grid Name="PanelGrid">
-            <Rectangle Fill="#FFF4F4F5" Stroke="Black" Margin="0,0,0,730"/>
+            <Rectangle Fill="#FFF4F4F5" Stroke="Black" Margin="0,0,0,730" Grid.ColumnSpan="2"/>
+            <Button Content="文字" Margin="10,717,839,10" FontSize="18" BorderBrush="{x:Null}" Name="ChooseTextButton" Click="ChooseTextButton_Click" IsEnabled="False"/>
+            <Button Content="图片" Margin="839,717,10,10" FontSize="18" BorderBrush="{x:Null}" Name="ChoosePICButton" Click="ChoosePICButton_Click" IsEnabled="True"/>
         </Grid>
     </Border>
 </Window>
