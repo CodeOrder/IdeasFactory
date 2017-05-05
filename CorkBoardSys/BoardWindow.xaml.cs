@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Diagnostics;
+using IdeasFactory.IdeaSys;
 namespace IdeasFactory.CorkBoardSys
 {
     /// <summary>
@@ -22,6 +23,13 @@ namespace IdeasFactory.CorkBoardSys
         public BoardWindow()
         {
             InitializeComponent();
+            this.Closing += BoardWindow_Closing;
+        }
+
+        void BoardWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            CorkIdeaCtrlSys.UpdateSaveFile();
+            MessageBox.Show("在保存链表中的所有笔记（文字和图片）都已保存");
         }
 
         private void MouseLeftButton_Down(object sender, MouseButtonEventArgs e)
@@ -35,21 +43,18 @@ namespace IdeasFactory.CorkBoardSys
             if (status == 0)
             {
                 BoardNote boardnote = new BoardNote(this.PanelGrid);
-                //boardnote.Name = (string)boardnote.name;
-                //boardnote.Name = "Duang";
                 boardnote.Margin = new Thickness(e.GetPosition(null).X,
                                                  e.GetPosition(null).Y, 0, 0);            //移动到鼠标单击的位置
                 this.PanelGrid.Children.Add(boardnote);
-                //IdeaSys.CorkIdeaCtrlSys.BoardNoteList.Add(boardnote.name, boardnote);
+                CorkIdeaCtrlSys.BoardNoteList.Add(boardnote.name, boardnote);
             }
             else if (status == 1)
             {
                 BoardPicture boardpic = new BoardPicture(this.PanelGrid);
-                //boardnote.Name = (string)boardnote.name;
-                //boardnote.Name = "Duang";
                 boardpic.Margin = new Thickness(e.GetPosition(null).X,
                                                  e.GetPosition(null).Y, 0, 0);            //移动到鼠标单击的位置
                 this.PanelGrid.Children.Add(boardpic);
+                CorkIdeaCtrlSys.BoardPICList.Add(boardpic.name, boardpic);
             }
         }
 
@@ -67,6 +72,26 @@ namespace IdeasFactory.CorkBoardSys
             this.ChooseTextButton.IsEnabled = true;
             this.status = 1;
             this.Background = new SolidColorBrush { Color = Color.FromRgb(100, 100, 100) };
+        }
+
+        private void LoadButton_Click(object sender, RoutedEventArgs e)
+        {
+            CorkIdeaCtrlSys.BoardNoteList = new Dictionary<string, BoardNote>();
+            CorkIdeaCtrlSys.BoardNoteList = CorkIdeaCtrlSys.LoadCorkNotes(this.PanelGrid);
+            CorkIdeaCtrlSys.SavingBoardNoteList = CorkIdeaCtrlSys.BoardNoteList;            //同时也覆盖到要保存的链表中
+            foreach (BoardNote note in CorkIdeaCtrlSys.BoardNoteList.Values)
+                this.PanelGrid.Children.Add(note);                  //添加到窗口中
+
+            CorkIdeaCtrlSys.BoardPICList = new Dictionary<string, BoardPicture>();
+            CorkIdeaCtrlSys.BoardPICList = CorkIdeaCtrlSys.LoadCorkPICNotes(this.PanelGrid);
+            CorkIdeaCtrlSys.SavingBoardPICList = CorkIdeaCtrlSys.BoardPICList;
+            foreach (BoardPicture note in CorkIdeaCtrlSys.BoardPICList.Values)
+                this.PanelGrid.Children.Add(note);
+        }
+
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

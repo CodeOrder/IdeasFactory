@@ -13,6 +13,9 @@ using System.Windows.Media.Imaging;
 
 namespace IdeasFactory.CorkBoardSys
 {
+    /// <summary>
+    /// 需要保存的：picture（控件显示的图片）,ContentIdea.description（关于图片的描述）
+    /// </summary>
     class BoardPicture : Grid
     {
         public string name = null;
@@ -63,16 +66,24 @@ namespace IdeasFactory.CorkBoardSys
             BitmapImage binimage = new BitmapImage(new Uri(Environment.CurrentDirectory + "/Icon/Bin.png", UriKind.Relative));
             deletebutton.Background = new ImageBrush { ImageSource = binimage };
             deletebutton.BorderBrush = null;
+
+            Random nameram = new Random();                                       //使得笔记的名称基本是随机的
+            int ramvalue = nameram.Next(0, Int32.MaxValue);
+            this.name = DateTime.Now.ToString("yyyyMMddhhmmss") + ramvalue + "_PICNote";
         }
 
         void deletebutton_Click(object sender, RoutedEventArgs e)
         {
+            CorkIdeaCtrlSys.BoardPICList.Remove(this.name);
+            CorkIdeaCtrlSys.SavingBoardPICList.Remove(this.name);
             parentGrid.Children.Remove(this);
+            CorkIdeaCtrlSys.UpdateSaveFile();
         }
 
         void savebutton_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("暂未开放保存功能");
+            CorkIdeaCtrlSys.SavingBoardPICList.Add(this.name, this);
+            CorkIdeaCtrlSys.UpdateSaveFile();
         }
 
         void BoardPicture_MouseMove(object sender, System.Windows.Input.MouseEventArgs e)
@@ -129,6 +140,7 @@ namespace IdeasFactory.CorkBoardSys
                 this.path = dialog.FileName;
                 BitmapImage newpicture = new BitmapImage(new Uri(path, UriKind.Absolute));
                 this.imagebox.Background = new ImageBrush { ImageSource = newpicture };
+                this.picture = newpicture;
             }
         }
 

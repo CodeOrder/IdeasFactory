@@ -22,11 +22,11 @@ namespace IdeasFactory.RandomIdeaSys
     public partial class RandomIdea : Window
     {
         static IdeaSys.SimpleIdea current_idea = null;
-        string[] subjects = File.ReadAllLines("Dictionary\\subject.ini", Encoding.Default);
-        string[] preps = File.ReadAllLines("Dictionary\\preposition.ini", Encoding.Default);
-        string[] predicates = File.ReadAllLines("Dictionary\\predicate.ini", Encoding.Default);
-        string[] verbs = File.ReadAllLines("Dictionary\\targetverb.ini", Encoding.Default);
-        string[] funcs = File.ReadAllLines("Dictionary\\function.ini", Encoding.Default);
+        string[] subjects = File.ReadAllLines("Dictionary\\subject.dat", Encoding.UTF8);
+        string[] preps = File.ReadAllLines("Dictionary\\preposition.dat", Encoding.UTF8);
+        string[] predicates = File.ReadAllLines("Dictionary\\predicate.dat", Encoding.UTF8);
+        string[] verbs = File.ReadAllLines("Dictionary\\targetverb.dat", Encoding.UTF8);
+        string[] funcs = File.ReadAllLines("Dictionary\\function.dat", Encoding.UTF8);
 
         System.Timers.Timer TigerAnimationTimer = new System.Timers.Timer();
 

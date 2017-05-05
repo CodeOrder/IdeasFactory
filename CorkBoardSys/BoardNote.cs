@@ -34,7 +34,9 @@ namespace IdeasFactory.CorkBoardSys
             this.Children.Add(deletebutton);
             setchildren();
             ContentIdea = new IdeaSys.CorkIdea(new string[] { contentbox.Text, titlebox.Text });
-            this.name = DateTime.Now.ToString("yyyyMMddhhmmss")+"_Note";
+            Random nameram = new Random();              //使得笔记的名称基本是随机的
+            int ramvalue = nameram.Next(0,Int32.MaxValue);
+            this.name = DateTime.Now.ToString("yyyyMMddhhmmss") + ramvalue + "_Note";
         }
 
         private void setparent()
@@ -48,7 +50,7 @@ namespace IdeasFactory.CorkBoardSys
             this.MouseDown += BoardNote_MouseDown;
             this.MouseUp += BoardNote_MouseUp;
             this.MouseMove += BoardNote_MouseMove;
-            this.HorizontalAlignment = HorizontalAlignment.Left;                    //设置控件的中心为左上角，
+            this.HorizontalAlignment = HorizontalAlignment.Left;                    //设置中心为左上角，
             this.VerticalAlignment = VerticalAlignment.Top;                         //Margin即为这个点的坐标
         }
 
@@ -82,12 +84,15 @@ namespace IdeasFactory.CorkBoardSys
         void deletebutton_Click(object sender, RoutedEventArgs e)
         {
             IdeaSys.CorkIdeaCtrlSys.BoardNoteList.Remove(this.name);
+            IdeaSys.CorkIdeaCtrlSys.SavingBoardNoteList.Remove(this.name);
             ParentGrid.Children.Remove(this);
+            IdeaSys.CorkIdeaCtrlSys.UpdateSaveFile();
         }
 
         void savebutton_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("暂未开放保存功能");
+            CorkIdeaCtrlSys.SavingBoardNoteList.Add(this.name, this);
+            CorkIdeaCtrlSys.UpdateSaveFile();
         }
 
         bool ismove = false;
