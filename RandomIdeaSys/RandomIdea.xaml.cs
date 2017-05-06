@@ -99,8 +99,22 @@ namespace IdeasFactory.RandomIdeaSys
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            IdeaSys.IOsys.SaveSimpleIdea(current_idea);
+            IdeaSys.SimpleIdea.SaveSimpleIdea(current_idea);
             MessageBox.Show("文件已经保存到根目录下的IF_result_" + DateTime.Now.ToString("yyyy_MM_dd_hh_mm_ss") + ".ida");
+        }
+
+        private void AddToBoardButton_Click(object sender, RoutedEventArgs e)
+        {
+            FileStream file = new FileStream(Environment.CurrentDirectory + "/Data/boardnote.dat", FileMode.Open);
+            StreamWriter writer = new StreamWriter(file, Encoding.UTF8);
+            Random random = new Random();
+            writer.Write(DateTime.Now.ToString("yyyyMMddhhmmss") + random.Next(0, Int32.MaxValue) + "_Note|");
+            writer.Write("100,100|");
+            writer.Write("随机生成的点子|");
+            foreach (string s in current_idea.content)
+                writer.Write(s);
+            writer.Close();
+            writer.Dispose();
         }
     }
 }

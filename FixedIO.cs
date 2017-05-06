@@ -10,7 +10,8 @@ namespace IdeasFactory
     {
         public static string[] GetAllLines(string path)
         {
-            StreamReader reader = new StreamReader(path);
+            FileStream file = new FileStream(path, FileMode.OpenOrCreate);
+            StreamReader reader = new StreamReader(file,Encoding.UTF8);
             List<string> lines = new List<string>();
             string line = reader.ReadLine();
             while (line != null)
